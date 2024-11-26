@@ -170,7 +170,7 @@ void mostrarComentariosPorLibro(nodoComentario * listaComentarios, int idLibro)
 
     while (aux)
     {
-        if (aux->dato.idLibro == idLibro)
+        if (aux->dato.idLibro == idLibro && aux->dato.eliminado == 0)
         {
             mostrarComentario(aux->dato);
             encontrado = 1;
