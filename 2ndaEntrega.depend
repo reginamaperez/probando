@@ -1,0 +1,367 @@
+# depslib dependency file v1.0
+1731316957 source:c:\users\pauli\desktop\utn\2ndaentrega\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+
+1731223476 c:\users\pauli\desktop\utn\2ndaentrega\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1731315204 source:c:\users\pauli\desktop\utn\2ndaentrega\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1731316957 source:c:\users\pauli\desktop\utn\2ndaentrega\stcomentario.c
+	"stComentario.h"
+
+1731309508 c:\users\pauli\desktop\utn\2ndaentrega\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1731316170 source:c:\users\pauli\desktop\utn\2ndaentrega\stcelda.c
+	"stCelda.h"
+
+1731317079 c:\users\pauli\desktop\utn\2ndaentrega\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+
+1731315910 source:c:\users\pauli\desktop\utn\2ndaentrega\nodolibro.c
+
+1732201136 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+	"menu.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+	"stLibro.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"stLibro.h"
+	"arbolUsuarios.h"
+
+1731506476 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\nodolibro.c
+
+1732201137 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\stcelda.c
+	"stCelda.h"
+
+1732201137 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\stcomentario.c
+	"stComentario.h"
+
+1731507007 c:\users\pauli\documents\github\entrega-final\2ndaentrega\nodolibros.h
+	"stCelda.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\stlibro.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\stlibro.c
+	"stLibro.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\menu.h
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+
+1732218801 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\menu.c
+	"menu.h"
+
+1732201137 source:c:\users\pauli\documents\github\entrega-final\2ndaentrega\validaciones.c
+	"validaciones.h"
+
+1732201137 c:\users\pauli\documents\github\entrega-final\2ndaentrega\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201136 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+	"menu.h"
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+	"stLibro.h"
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"stLibro.h"
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stlibro.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\menu.h
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\menu.c
+	"menu.h"
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stcelda.c
+	"stCelda.h"
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stcomentario.c
+	"stComentario.h"
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\stlibro.c
+	"stLibro.h"
+
+1732201137 source:c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\validaciones.c
+	"validaciones.h"
+
+1732201137 c:\users\pauli\downloads\version anterior a problemas libros\entrega-final-main\2ndaentrega\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201136 source:c:\users\pauli\desktop\usuarios y logueo funcionando\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 source:c:\users\pauli\desktop\usuarios y logueo funcionando\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+	"menu.h"
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+	"stLibro.h"
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"stLibro.h"
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\stlibro.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\menu.h
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+
+1732218897 source:c:\users\pauli\desktop\usuarios y logueo funcionando\menu.c
+	"menu.h"
+
+1732201137 source:c:\users\pauli\desktop\usuarios y logueo funcionando\stcelda.c
+	"stCelda.h"
+
+1732201137 source:c:\users\pauli\desktop\usuarios y logueo funcionando\stcomentario.c
+	"stComentario.h"
+
+1732201137 source:c:\users\pauli\desktop\usuarios y logueo funcionando\stlibro.c
+	"stLibro.h"
+
+1732201137 source:c:\users\pauli\desktop\usuarios y logueo funcionando\validaciones.c
+	"validaciones.h"
+
+1732201137 c:\users\pauli\desktop\usuarios y logueo funcionando\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732201136 source:c:\users\pauli\desktop\seguir en esta\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\desktop\seguir en esta\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732483656 source:c:\users\pauli\desktop\seguir en esta\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+	"menu.h"
+
+1732345551 c:\users\pauli\desktop\seguir en esta\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+	"stLibro.h"
+
+1732484611 c:\users\pauli\desktop\seguir en esta\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"stLibro.h"
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\desktop\seguir en esta\stlibro.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732436770 c:\users\pauli\desktop\seguir en esta\menu.h
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+
+1732484586 source:c:\users\pauli\desktop\seguir en esta\menu.c
+	"menu.h"
+
+1732482953 source:c:\users\pauli\desktop\seguir en esta\stcelda.c
+	"stCelda.h"
+
+1732484611 source:c:\users\pauli\desktop\seguir en esta\stcomentario.c
+	"stComentario.h"
+
+1732201137 source:c:\users\pauli\desktop\seguir en esta\stlibro.c
+	"stLibro.h"
+
+1732201137 source:c:\users\pauli\desktop\seguir en esta\validaciones.c
+	"validaciones.h"
+
+1732201137 c:\users\pauli\desktop\seguir en esta\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732512077 source:c:\users\pauli\desktop\correccion de comentarios\arbolusuarios.c
+	"arbolUsuarios.h"
+
+1732201137 c:\users\pauli\desktop\correccion de comentarios\arbolusuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732516345 source:c:\users\pauli\desktop\correccion de comentarios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+	"menu.h"
+
+1732487671 c:\users\pauli\desktop\correccion de comentarios\stcelda.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stComentario.h"
+	"arbolUsuarios.h"
+	"stLibro.h"
+
+1732578934 c:\users\pauli\desktop\correccion de comentarios\stcomentario.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"stLibro.h"
+	"arbolUsuarios.h"
+
+1732630119 c:\users\pauli\desktop\correccion de comentarios\stlibro.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732516337 c:\users\pauli\desktop\correccion de comentarios\menu.h
+	"arbolUsuarios.h"
+	"stCelda.h"
+	"stComentario.h"
+	"stLibro.h"
+
+1732630142 source:c:\users\pauli\desktop\correccion de comentarios\menu.c
+	"menu.h"
+
+1732630186 source:c:\users\pauli\desktop\correccion de comentarios\stcelda.c
+	"stCelda.h"
+
+1732629404 source:c:\users\pauli\desktop\correccion de comentarios\stlibro.c
+	"stLibro.h"
+
+1732201137 source:c:\users\pauli\desktop\correccion de comentarios\validaciones.c
+	"validaciones.h"
+
+1732201137 c:\users\pauli\desktop\correccion de comentarios\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1732581674 source:c:\users\pauli\desktop\correccion de comentarios\stcomentario.c
+	"stComentario.h"
+
