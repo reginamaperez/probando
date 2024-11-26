@@ -39,7 +39,7 @@ int main()
     //mostrarArchivoLibros("archivoLibros.dat");
 
     nodoArbolUsuarios *arbolUsuarios = inicArbol();
-    nodoLibro * ldl=NULL;
+    nodoLibro * ldl= inicListaLibros();
     nodoComentario * listaComentarios=inicListaComentario();
 
     arbolUsuarios= cargarUsuariosDesdeArchivo(arbolUsuarios,"archivoUsuarios.dat");
