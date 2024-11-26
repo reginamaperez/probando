@@ -6,15 +6,16 @@
 #include <string.h>
 
 typedef struct{
-    int idLibro; /// único, autoincremental
+    int idLibro; /// Ãºnico, autoincremental
     char titulo[100];
     char editorial[50];
     char autor[50];
     char categoria[50];
     float valoracion;
-    int eliminado; /// 0 si está activo - 1 si está eliminado
+    int eliminado; /// 0 si estÃ¡ activo - 1 si estÃ¡ eliminado
 }stLibro;
 
+nodoLibro * inicListaLibros();
 stLibro cargarUnLibro();
 void mostrarUnLibro(stLibro libro);
 
