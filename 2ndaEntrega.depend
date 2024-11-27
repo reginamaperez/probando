@@ -365,15 +365,15 @@
 1732581674 source:c:\users\pauli\desktop\correccion de comentarios\stcomentario.c
 	"stComentario.h"
 
-1732512077 source:c:\users\ana\downloads\casi listo\arbolusuarios.c
+1732512077 source:c:\users\ana\downloads\casi listo\2ndaentrega\arbolusuarios.c
 	"arbolUsuarios.h"
 
-1732201137 c:\users\ana\downloads\casi listo\arbolusuarios.h
+1732201137 c:\users\ana\downloads\casi listo\2ndaentrega\arbolusuarios.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1732661945 source:c:\users\ana\downloads\casi listo\main.c
+1732661945 source:c:\users\ana\downloads\casi listo\2ndaentrega\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -383,7 +383,7 @@
 	"stLibro.h"
 	"menu.h"
 
-1732487671 c:\users\ana\downloads\casi listo\stcelda.h
+1732487671 c:\users\ana\downloads\casi listo\2ndaentrega\stcelda.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -391,7 +391,7 @@
 	"arbolUsuarios.h"
 	"stLibro.h"
 
-1732719475 c:\users\ana\downloads\casi listo\stcomentario.h
+1732719475 c:\users\ana\downloads\casi listo\2ndaentrega\stcomentario.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -399,33 +399,33 @@
 	"stLibro.h"
 	"arbolUsuarios.h"
 
-1732630119 c:\users\ana\downloads\casi listo\stlibro.h
+1732630119 c:\users\ana\downloads\casi listo\2ndaentrega\stlibro.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1732662090 c:\users\ana\downloads\casi listo\menu.h
+1732662090 c:\users\ana\downloads\casi listo\2ndaentrega\menu.h
 	"arbolUsuarios.h"
 	"stCelda.h"
 	"stComentario.h"
 	"stLibro.h"
 
-1732742306 source:c:\users\ana\downloads\casi listo\menu.c
+1732719516 source:c:\users\ana\downloads\casi listo\2ndaentrega\menu.c
 	"menu.h"
 
-1732719526 source:c:\users\ana\downloads\casi listo\stcelda.c
+1732746381 source:c:\users\ana\downloads\casi listo\2ndaentrega\stcelda.c
 	"stCelda.h"
 
-1732742306 source:c:\users\ana\downloads\casi listo\stcomentario.c
+1732745441 source:c:\users\ana\downloads\casi listo\2ndaentrega\stcomentario.c
 	"stComentario.h"
 
-1732629404 source:c:\users\ana\downloads\casi listo\stlibro.c
+1732629404 source:c:\users\ana\downloads\casi listo\2ndaentrega\stlibro.c
 	"stLibro.h"
 
-1732201137 source:c:\users\ana\downloads\casi listo\validaciones.c
+1732201137 source:c:\users\ana\downloads\casi listo\2ndaentrega\validaciones.c
 	"validaciones.h"
 
-1732201137 c:\users\ana\downloads\casi listo\validaciones.h
+1732201137 c:\users\ana\downloads\casi listo\2ndaentrega\validaciones.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

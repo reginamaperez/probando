@@ -528,25 +528,7 @@ void menuLibros(nodoArbolUsuarios * usuarioLogueado, nodoLibro ** listaLibros, n
         system("pause");
         system("cls");
         break;
-        case 7:
-{
-    int idLibro;
-    printf("\nIngrese el ID del libro al que desea agregar un comentario: ");
-    scanf("%d", &idLibro);
 
-    nodoLibro* aux = buscaLibroPorId(listaLibros, idLibro);
-    if (aux) {
-        printf("Libro encontrado: %s\n", aux->libro.titulo);
-        agregarComentario(&listaComentarios, aux->libro, usuarioLogueado);
-    } else {
-        printf("Libro no encontrado.\n");
-    }
-    guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
-    system("pause");
-    system("cls");
-    break;
-}
-/**
         case 7:
         {
             int idLibro;
@@ -589,7 +571,7 @@ void menuLibros(nodoArbolUsuarios * usuarioLogueado, nodoLibro ** listaLibros, n
             guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
             system("pause");
             system("cls");
-            break; **/
+            break;
         case 8:
             mostrarArchivoComentarios("archivoComentarios.dat"); // Llamamos a la función para mostrar todos los comentarios
             system("pause");

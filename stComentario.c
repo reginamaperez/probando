@@ -1,150 +1,6 @@
 #include "stComentario.h"
 
-void mostrarComentario(stComentario comentario)
-{
-    printf("ID Comentario: %d\n", comentario.idComentario);
-    printf("ID Libro: %d\n", comentario.idLibro);
-    printf("ID Usuario: %d\n", comentario.idUsuario);
-    printf("Título: %s\n", comentario.tituloComentario);
-    printf("Descripción: %s\n", comentario.descripcion);
-    printf("Puntaje: %d/5\n", comentario.puntaje);
-    printf("Fecha: %s\n", comentario.fechaComentario);
-    printf("---------------------------------------\n");
-}
 
-nodoComentario *inicListaComentario()
-{
-    return NULL;
-}
-
-stComentario crearComentario(stLibro libro, int idUsuario, nodoComentario* listaC)
-{
-    stComentario nuevo;
-    time_t tp;
-    time(&tp); // Fecha actual
-
-    printf("\nIngrese el titulo del comentario: ");
-    fflush(stdin);
-    gets(nuevo.tituloComentario);
-
-    printf("\nDescripción: ");
-    fflush(stdin);
-    gets(nuevo.descripcion);
-
-    int puntajeValido = 0;
-    do {
-        printf("\nPuntuación (0-5): ");
-        if (scanf("%d", &nuevo.puntaje) == 1 && nuevo.puntaje >= 0 && nuevo.puntaje <= 5) {
-            puntajeValido = 1;
-        } else {
-            printf("Entrada inválida. Ingrese un número entre 0 y 5.\n");
-            fflush(stdin); // No siempre limpia correctamente
-            while (getchar() != '\n'); // Limpiar buffer manualmente
-        }
-    } while (!puntajeValido);
-
-    nuevo.eliminado = 0;
-    nuevo.idUsuario = idUsuario;
-    nuevo.idLibro = libro.idLibro;
-
-    char *fecha = asctime(localtime(&tp));
-    fecha[strcspn(fecha, "\n")] = '\0';
-    strcpy(nuevo.fechaComentario, fecha);
-
-    nuevo.idComentario = generarIdComentario(listaC);
-
-    return nuevo;
-}
-
-nodoComentario* crearNodoComentario(stLibro libro, nodoComentario* listaC, nodoArbolUsuarios* usuarioLogueado) {
-    nodoComentario* nuevo = (nodoComentario*)malloc(sizeof(nodoComentario));
-    if (!nuevo) {
-        return NULL;
-    }
-
-    nuevo->dato = crearComentario(libro, usuarioLogueado->datosUsuarios.idUsuario, listaC);
-    nuevo->sig = NULL;
-    return nuevo;
-}
-
-int generarIdComentario(nodoComentario * listaComentarios)
-{
-    int id = 0;
-    nodoComentario * aux = listaComentarios;
-
-    while (aux)
-    {
-        if (aux->dato.idComentario > id)
-        {
-            id = aux->dato.idComentario;
-        }
-        aux = aux->sig;
-    }
-
-    return id + 1;
-}
-
-void mostrarComentariosPorLibro(nodoComentario *listaComentarios, int idLibro)
-{
-    nodoComentario *aux = listaComentarios;
-    int encontrados = 0;
-
-    while (aux != NULL) {
-        if (aux->dato.idLibro == idLibro && aux->dato.eliminado == 0) { // Verificamos que no esté eliminado
-            printf("Comentario de Usuario ID %d: %s\n", aux->dato.idUsuario, aux->dato.descripcion);
-            printf("Puntuación: %d\n", aux->dato.puntaje);
-            encontrados++;
-        }
-        aux = aux->sig;
-    }
-
-    if (encontrados == 0) {
-        printf("No hay comentarios para este libro.\n");
-    }
-}
-
-nodoComentario* agregarAlFinalComentario(nodoComentario* listaComentario, nodoComentario* nuevo) {
-    if (!listaComentario) {
-        return nuevo; // La lista está vacía, el nuevo nodo es el primero
-    } else {
-        nodoComentario* ultimo = listaComentario;
-        while (ultimo->sig != NULL) {
-            ultimo = ultimo->sig;
-        }
-        ultimo->sig = nuevo; // Conectamos el nuevo nodo al final
-    }
-    return listaComentario;
-}
-
-int comentarioExistente(nodoComentario* lista, int idLibro, nodoArbolUsuarios* usuario)
-{
-    nodoComentario* aux = lista;
-    while (aux)
-    {
-        if (aux->dato.idLibro == idLibro && aux->dato.idUsuario == usuario->datosUsuarios.idUsuario)
-        {
-            return 1; // Ya existe un comentario
-        }
-        aux = aux->sig;
-    }
-    return 0; // No existe un comentario
-}
-
-void agregarComentario(nodoComentario** listaComentarios, stLibro libro, nodoArbolUsuarios* usuarioLogueado) {
-    if (comentarioExistente(*listaComentarios, libro.idLibro, usuarioLogueado)) {
-        printf("Ya existe un comentario para este libro de este usuario.\n");
-        return;
-    }
-
-    nodoComentario* nuevo = crearNodoComentario(libro, *listaComentarios, usuarioLogueado);
-    if (nuevo) {
-        *listaComentarios = agregarAlFinalComentario(*listaComentarios, nuevo);
-        printf("Comentario agregado exitosamente.\n");
-    } else {
-        printf("ERROR: No se pudo crear el comentario.\n");
-    }
-}
-/**
 void mostrarComentario(stComentario comentario)
 {
     printf("ID Comentario: %d\n", comentario.idComentario);
@@ -234,8 +90,7 @@ int generarIdComentario(nodoComentario * listaComentarios)
 
     printf("DEBUG: ID generado: %d\n", id + 1);
     return id + 1;
-}**/
-
+}
 /*
 nodoComentario * buscaComentarioPorId(nodoComentario * listaComentario, int idComentario)
 {
@@ -252,7 +107,7 @@ nodoComentario * buscaComentarioPorId(nodoComentario * listaComentario, int idCo
     }
     return aBuscar;
 }
-*/
+
 nodoComentario *buscaComentarioPorId(nodoComentario *lista, int idComentario) {
     nodoComentario *actual = lista;
 
@@ -265,6 +120,17 @@ nodoComentario *buscaComentarioPorId(nodoComentario *lista, int idComentario) {
     }
 
     return NULL; // No se encontró el comentario
+}
+*/
+nodoComentario *buscaComentarioPorId(nodoComentario *lista, int idComentario) {
+    nodoComentario *actual = lista;
+    while (actual) {
+        if (actual->dato.idComentario == idComentario) {
+            return actual;
+        }
+        actual = actual->sig;
+    }
+    return NULL; // No encontrado
 }
 
 void mostrarComentariosPorUsuario(nodoComentario *lista, int idUsuario) {
@@ -284,7 +150,6 @@ void mostrarComentariosPorUsuario(nodoComentario *lista, int idUsuario) {
     }
 }
 
-/**
 nodoComentario* buscarUltimoNodoComentario(nodoComentario* listaComentario)
 {
     nodoComentario * seg = listaComentario;
@@ -327,8 +192,8 @@ void mostrarComentariosPorLibro(nodoComentario *listaComentarios, int idLibro)
     if (encontrados == 0) {
         printf("No hay comentarios para este libro.\n");
     }
-}**/
-
+}
+/*
 nodoComentario* buscarAeliminar(nodoComentario* listaC, nodoArbolUsuarios* usuarioLogueado, int idComentario)
 {
     nodoComentario* actual = listaC;
@@ -353,7 +218,30 @@ nodoComentario* buscarAeliminar(nodoComentario* listaC, nodoArbolUsuarios* usuar
 
     return listaC;
 }
+*/
 
+nodoComentario* buscarAeliminar(nodoComentario* lista, nodoArbolUsuarios* usuarioLogueado, int idComentario) {
+    nodoComentario* actual = lista;
+    nodoComentario* anterior = NULL;
+
+    while (actual) {
+        if (actual->dato.idComentario == idComentario &&
+            actual->dato.idUsuario == usuarioLogueado->datosUsuarios.idUsuario) {
+            // Encontrado
+            if (anterior) {
+                anterior->sig = actual->sig; // Salta el nodo
+            } else {
+                lista = actual->sig; // Eliminar cabeza
+            }
+            free(actual); // Libera memoria
+            return lista;
+        }
+        anterior = actual;
+        actual = actual->sig;
+    }
+    printf("DEBUG: Comentario no encontrado o no pertenece al usuario.\n");
+    return lista;
+}
 nodoComentario* buscarComentarioPorId(nodoComentario* lista, int idComentario)
 {
     nodoComentario* actual = lista;
@@ -367,7 +255,6 @@ nodoComentario* buscarComentarioPorId(nodoComentario* lista, int idComentario)
     return NULL;
 }
 
-/**
 int comentarioExistente(nodoComentario* lista, int idLibro, nodoArbolUsuarios* usuario)
 {
     nodoComentario* aux = lista;
@@ -381,7 +268,7 @@ int comentarioExistente(nodoComentario* lista, int idLibro, nodoArbolUsuarios* u
     }
     return 0; // No existe un comentario
 }
-**/
+
 void mostrarComentarios(nodoComentario* listaComentarios)
 {
     if (listaComentarios == NULL) {
@@ -445,27 +332,33 @@ void guardarComentariosEnArchivo(nodoComentario* listaC, char nombreArchivo[]) {
     fclose(archivo);
     printf("DEBUG: Comentarios guardados correctamente.\n");
 }
+
 */
-
-void guardarComentariosEnArchivo(char archivoComentario[], nodoComentario *lista) {
-    printf("DEBUG: Intentando guardar en el archivo: %s\n", archivoComentario); // Verifica la ruta
-    FILE *fp = fopen(archivoComentario, "wb"); // Abre el archivo en modo escritura binaria
-
-    if (fp) {
-        nodoComentario *actual = lista;
-
-        while (actual) {
-            printf("DEBUG: Guardando comentario con ID: %d\n", actual->dato.idComentario);
-            fwrite(&actual->dato, sizeof(stComentario), 1, fp);
-            actual = actual->sig;
-        }
-
-        fclose(fp);
-        printf("DEBUG: Archivo guardado correctamente.\n");
-    } else {
-        perror("ERROR al intentar guardar los comentarios");
-        printf("ERROR: Verifica la ruta y permisos del archivo: %s\n", archivoComentario);
+void guardarComentariosEnArchivo(nodoComentario* listaC, char nombreArchivo[]) {
+    if (!listaC) {
+        printf("DEBUG: Lista de comentarios está vacía. Nada que guardar.\n");
+        return;
     }
+
+    FILE* archivo = fopen(nombreArchivo, "wb");
+    if (!archivo) {
+        perror("ERROR al abrir archivo para guardar comentarios");
+        return;
+    }
+
+    nodoComentario* actual = listaC;
+    while (actual) {
+        if (fwrite(&(actual->dato), sizeof(stComentario), 1, archivo) != 1) {
+            perror("ERROR al escribir en el archivo");
+            fclose(archivo);
+            return;
+        }
+        printf("DEBUG: Guardando comentario con ID %d.\n", actual->dato.idComentario);
+        actual = actual->sig;
+    }
+
+    fclose(archivo);
+    printf("DEBUG: Comentarios guardados correctamente.\n");
 }
 
 nodoComentario* cargarComentariosDesdeArchivo(char nombreArchivo[])
@@ -507,7 +400,7 @@ void mostrarArchivoComentarios(char archivoComentario[])
         fclose(archi);
     }
 }
-
+/*
 void menuComentarios(char *archivoComentarios, nodoArbolUsuarios *usuarioLogueado)
 {
     nodoComentario *listaComentarios = cargarComentariosDesdeArchivo(archivoComentarios);
@@ -563,4 +456,68 @@ void menuComentarios(char *archivoComentarios, nodoArbolUsuarios *usuarioLoguead
     system("cls");
 }
 
+*/
 
+void menuComentarios(char *archivoComentarios, nodoArbolUsuarios *usuarioLogueado) {
+    nodoComentario *listaComentarios = cargarComentariosDesdeArchivo(archivoComentarios);
+
+    if (listaComentarios) {
+        printf("Comentarios cargados correctamente.\n");
+    } else {
+        printf("DEBUG: No se encontraron comentarios. Inicia el programa sin comentarios cargados.\n");
+    }
+
+    printf("\nTus comentarios:\n");
+    mostrarComentariosPorUsuario(listaComentarios, usuarioLogueado->datosUsuarios.idUsuario);
+
+    // Opciones para editar o eliminar un comentario
+    if (listaComentarios) {
+        int idComentario;
+        printf("\nIngrese el ID del comentario que desea editar/eliminar: ");
+        if (scanf("%d", &idComentario) != 1) {
+            printf("Entrada no valida. Seleccione un numero.\n");
+            fflush(stdin);
+            return;
+        }
+
+        nodoComentario *comentarioEncontrado = buscaComentarioPorId(listaComentarios, idComentario);
+        if (comentarioEncontrado && comentarioEncontrado->dato.idUsuario == usuarioLogueado->datosUsuarios.idUsuario) {
+            int opcionAccion;
+            printf("\n1. Editar comentario\n");
+            printf("2. Eliminar comentario\n");
+            printf("3. Volver\n");
+            printf("Seleccione una opcion: ");
+            if (scanf("%d", &opcionAccion) != 1) {
+                printf("Entrada no valida. Seleccione un numero.\n");
+                fflush(stdin);
+                return;
+            }
+
+            switch (opcionAccion) {
+                case 1:
+                    editarComentario(comentarioEncontrado); // Edita el comentario
+                    printf("Comentario editado correctamente.\n");
+                    break;
+                case 2:
+                    listaComentarios = buscarAeliminar(listaComentarios, usuarioLogueado, idComentario);
+                    printf("Comentario eliminado correctamente.\n");
+                    break;
+                case 3:
+                    printf("Volviendo al menu...\n");
+                    break;
+                default:
+                    printf("Opcion no valida.\n");
+            }
+        } else {
+            printf("No se encontro el comentario o no es tuyo.\n");
+        }
+    } else {
+        printf("No hay comentarios cargados.\n");
+    }
+
+    // Guardar los cambios en el archivo
+    guardarComentariosEnArchivo(listaComentarios, archivoComentarios);
+
+    system("pause");
+    system("cls");
+}

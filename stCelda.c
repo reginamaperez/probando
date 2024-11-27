@@ -11,6 +11,7 @@ nodoLibro * crearNodoLibros(stLibro libro)
     nuevo->libro=libro;
     nuevo->sig=NULL;
     nuevo->dato= inicListaComentario();
+    nuevo->dato->dato.idLibro = libro.idLibro;
 
     return nuevo;
 }
