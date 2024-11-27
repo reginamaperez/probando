@@ -1,9 +1,5 @@
 #include "stLibro.h"
 
-nodoLibro * inicListaLibros()
-{
-return NULL;
-}
 
 void mostrarUnLibro(stLibro libro)
 {

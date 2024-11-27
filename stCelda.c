@@ -10,11 +10,12 @@ nodoLibro * crearNodoLibros(stLibro libro)
     nodoLibro * nuevo= (nodoLibro*)malloc(sizeof(nodoLibro));
     nuevo->libro=libro;
     nuevo->sig=NULL;
+    nuevo->dato= inicListaComentario();
 
     return nuevo;
 }
 
-
+/*
 
 nodoLibro * buscaLibroPorId(nodoLibro * listaLibros, int idLibro){
 
@@ -30,6 +31,19 @@ nodoLibro * buscaLibroPorId(nodoLibro * listaLibros, int idLibro){
 
     return aBuscar;
 
+}
+*/
+nodoLibro* buscaLibroPorId(nodoLibro* listaLibros, int id) {
+    while (listaLibros) {
+        printf("DEBUG: Revisando libro con ID: %d\n", listaLibros->libro.idLibro);
+        if (listaLibros->libro.idLibro == id) {
+            printf("DEBUG: Libro encontrado.\n");
+            return listaLibros;
+        }
+        listaLibros = listaLibros->sig;
+    }
+    printf("DEBUG: No se encontró libro con el ID %d.\n", id);
+    return NULL;
 }
 
 nodoLibro* buscarUltimoNodo(nodoLibro* listaLibros)
@@ -340,7 +354,7 @@ void buscarLibrosPorAutor(nodoLibro *listaLibros, char autorBuscar[])
     }
 
     printf("-----------------------------------\n");
-} 
+}
 
 
 void buscarLibroPorTitulo(nodoLibro *listaLibros, char tituloBuscar[])

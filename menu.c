@@ -1,7 +1,7 @@
 #include "menu.h"
 
 
-int menu(nodoArbolUsuarios ** arbolUsuarios, nodoLibro ** listaLibros, nodoComentario * listaComentarios)
+int menu(nodoArbolUsuarios ** arbolUsuarios, nodoLibro ** listaLibros)
 {
     int opcion = 0;
 
@@ -22,7 +22,7 @@ int menu(nodoArbolUsuarios ** arbolUsuarios, nodoLibro ** listaLibros, nodoComen
             break;
         case 2:
             system("cls");
-            iniciarSesion(*arbolUsuarios,*listaLibros,listaComentarios);
+            iniciarSesion(*arbolUsuarios,*listaLibros);
             system("pause");
             system("cls");
             break;
@@ -198,7 +198,7 @@ void registrarUsuario(nodoArbolUsuarios **arbolUsuarios)
     printf("Usuario registrado exitosamente!\n");
 }
 
-void iniciarSesion(nodoArbolUsuarios *arbolUsuarios,nodoLibro * listaLibros, nodoComentario * listaComentarios)
+void iniciarSesion(nodoArbolUsuarios *arbolUsuarios,nodoLibro * listaLibros)
 {
     char password[20];
     char userName[20];
@@ -227,7 +227,7 @@ void iniciarSesion(nodoArbolUsuarios *arbolUsuarios,nodoLibro * listaLibros, nod
         {
             printf("Inicio de sesion exitoso.\n");
             system("cls");
-            menuPostLogin(usuarioActual, arbolUsuarios,listaLibros,listaComentarios);
+            menuPostLogin(usuarioActual, arbolUsuarios,listaLibros);
         }
         else
         {
@@ -328,10 +328,10 @@ void menuAdministrador(nodoArbolUsuarios ** arbolUsuarios, nodoLibro **listaLibr
     while (opcion != 7);
 }
 
-void menuPostLogin(nodoArbolUsuarios *usuarioLogueado, nodoArbolUsuarios **arbolUsuarios,nodoLibro ** listaLibros, nodoComentario * listaComentarios)
+void menuPostLogin(nodoArbolUsuarios *usuarioLogueado, nodoArbolUsuarios **arbolUsuarios,nodoLibro ** listaLibros)
 {
     int opcion;
-
+    nodoComentario * listaComentarios=NULL ;
     do
     {
         printf("\n=== BIENVENIDO! ===\n");
@@ -453,8 +453,8 @@ void menuLibros(nodoArbolUsuarios * usuarioLogueado, nodoLibro ** listaLibros, n
         printf("5. Mostrar libros\n");
         printf("6. Ver un libro y sus comentarios\n");
         printf("7. Agregar un comentario a un libro\n");
-        printf("8. Ver y editar mis comentarios\n");
-        printf("9. Borrar un comentario propio\n");
+        printf("8. Ver comentarios\n");
+        printf("9. Borrar o editar comentario propio\n");
         printf("10. Salir al menu principal\n");
         printf("Ingrese una opcion: ");
         scanf("%d", &opcion);
@@ -528,107 +528,88 @@ void menuLibros(nodoArbolUsuarios * usuarioLogueado, nodoLibro ** listaLibros, n
         system("pause");
         system("cls");
         break;
+        case 7:
+{
+    int idLibro;
+    printf("\nIngrese el ID del libro al que desea agregar un comentario: ");
+    scanf("%d", &idLibro);
 
+    nodoLibro* aux = buscaLibroPorId(listaLibros, idLibro);
+    if (aux) {
+        printf("Libro encontrado: %s\n", aux->libro.titulo);
+        agregarComentario(&listaComentarios, aux->libro, usuarioLogueado);
+    } else {
+        printf("Libro no encontrado.\n");
+    }
+    guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
+    system("pause");
+    system("cls");
+    break;
+}
+/**
         case 7:
         {
             int idLibro;
             printf("\nIngrese el ID del libro al que desea agregar un comentario: ");
             scanf("%d", &idLibro);
 
+            printf("ID ingresado: %d\n", idLibro);
+
             nodoLibro* aux = buscaLibroPorId(listaLibros, idLibro);
             if (aux)
             {
                 printf("Libro encontrado: %s\n", aux->libro.titulo);
-                nodoComentario* nuevo = crearNodoComentario(aux->libro, listaComentarios, usuarioLogueado);
-                if (nuevo)
+
+                // Verificar si ya existe un comentario para este libro y usuario
+                if (comentarioExistente(listaComentarios, idLibro, usuarioLogueado))
                 {
-                    listaComentarios = agregarAlFinalComentario(listaComentarios, nuevo);
-                    printf("Comentario agregado exitosamente.\n");
+                    printf("Ya existe un comentario para este libro de este usuario.\n");
                 }
                 else
                 {
-                    printf("No se pudo crear el comentario. Intente nuevamente.\n");
+                    nodoComentario* nuevo = crearNodoComentario(aux->libro, listaComentarios, usuarioLogueado);
+                    if (nuevo)
+                    {
+                        printf(" Nodo comentario creado correctamente.\n");
+
+                        listaComentarios = agregarAlFinalComentario(listaComentarios, nuevo);
+                        printf("Comentario agregado exitosamente.\n");
+                    }
+                    else
+                    {
+                        printf("ERROR: No se pudo crear el comentario.\n");
+                    }
                 }
             }
             else
             {
-                printf("No se encontro un libro con ese ID.\n");
+                printf("ERROR: No se encontro un libro con ese ID.\n");
             }
         }
-        guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
-        system("pause");
-        system("cls");
-        break;
-
-        case 8:
-        {
-            listaComentarios=cargarComentariosDesdeArchivo("archivoComentarios.dat");
-
-            printf("\n=== Ver y editar mis comentarios ===\n");
-            mostrarComentariosPorUsuario(listaComentarios, usuarioLogueado->datosUsuarios);
-
-            int idComentario;
-            printf("\nIngrese el ID del comentario que desea editar (o -1 para volver): ");
-            scanf("%d", &idComentario);
-
-            if (idComentario != -1)
-            {
-                nodoComentario* comentario = buscarComentarioPorId(listaComentarios, idComentario);
-                if (comentario && comentario->dato.idUsuario == usuarioLogueado->datosUsuarios.idUsuario)
-                {
-                    printf("\nComentario actual: %s\n", comentario->dato.descripcion);
-                    printf("Ingrese el nuevo contenido del comentario:\n");
-                    fflush(stdin);
-                    gets(comentario->dato.descripcion);
-                    printf("Comentario editado exitosamente.\n");
-                }
-                else
-                {
-                    printf("No se encontro el comentario o no tiene permisos para editarlo.\n");
-                }
-            }
-        }
-        guardarComentariosEnArchivo(listaComentarios, "archivoComentarios.dat");
-        system("pause");
-        system("cls");
-        break;
-        case 9:
-        {
-            printf("\n=== Comentarios propios ===\n");
-            mostrarComentariosPorUsuario(listaComentarios, usuarioLogueado->datosUsuarios.idUsuario);
-
-            int idComentario;
-            printf("\nIngrese el ID del comentario que desea eliminar: ");
-            scanf("%d", &idComentario);
-
-            nodoComentario *anterior = listaComentarios;
-            listaComentarios = buscarAeliminar(listaComentarios, usuarioLogueado,idComentario);
-
-            if (listaComentarios != anterior)
-            {
-                printf("Comentario eliminado exitosamente.\n");
-            }
-            else
-            {
-                printf("No se encontro el comentario o no tiene permisos para eliminarlo.\n");
-            }
-        }
-        system("pause");
-        system("cls");
-        break;
-
-        case 10:
-            guardarLibrosEnArchivo(listaLibros,"archivoLibros.dat");
             guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
-            printf("Regresando al menu principal...\n");
+            system("pause");
+            system("cls");
+            break; **/
+        case 8:
+            mostrarArchivoComentarios("archivoComentarios.dat"); // Llamamos a la función para mostrar todos los comentarios
+            system("pause");
             system("cls");
             break;
+        case 9:
+            menuComentarios("archivoComentarios.dat", usuarioLogueado);
+            break;
+        case 10:
+                guardarLibrosEnArchivo(listaLibros,"archivoLibros.dat");
+                guardarComentariosEnArchivo(listaComentarios,"archivoComentarios.dat");
+                printf("Regresando al menu principal...\n");
+                system("cls");
+                break;
 
-        default:
-            printf("Opcion no valida.\n");
+            default:
+                printf("Opcion no valida.\n");
+            }
         }
+        while(opcion != 10);
     }
-    while(opcion != 10);
-}
 
 

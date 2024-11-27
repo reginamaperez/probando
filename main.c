@@ -39,8 +39,7 @@ int main()
     //mostrarArchivoLibros("archivoLibros.dat");
 
     nodoArbolUsuarios *arbolUsuarios = inicArbol();
-    nodoLibro * ldl= inicListaLibros();
-    nodoComentario * listaComentarios=inicListaComentario();
+    nodoLibro * ldl=inicListaLibros();
 
     arbolUsuarios= cargarUsuariosDesdeArchivo(arbolUsuarios,"archivoUsuarios.dat");
     ldl= cargarArchivoEnLista("archivoLibros.dat", ldl);
@@ -51,7 +50,7 @@ int main()
     printf("LISTA DE LIBROS:\n");
     mostrarListaLibros(ldl);
 */
-    menu(&arbolUsuarios,&ldl,&listaComentarios);
+    menu(&arbolUsuarios,&ldl);
 
     return 0;
 }

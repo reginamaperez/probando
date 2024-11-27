@@ -29,15 +29,15 @@ typedef struct{
 
 void mostrarComentario(stComentario comentario);
 nodoComentario * inicListaComentario();
-nodoComentario* crearNodoComentario(stLibro libro, nodoComentario* listaC,nodoArbolUsuarios * usuarioLogueado);
+nodoComentario* crearNodoComentario(stLibro libro, nodoComentario* listaC, nodoArbolUsuarios* usuarioLogueado);
 stComentario crearComentario(stLibro libro, int idUsuario, nodoComentario* listaC);
 int generarIdComentario(nodoComentario * listaComentarios);
 nodoComentario * buscaComentarioPorId(nodoComentario * listaComentario, int idComentario);
 nodoComentario* buscarUltimoNodoComentario(nodoComentario* listaComentario);
 nodoComentario* agregarAlFinalComentario(nodoComentario* listaComentario, nodoComentario* nuevo);
-void mostrarComentarios(nodoComentario* lista);
+void mostrarComentarios(nodoComentario* listaComentarios);
 void mostrarComentariosPorLibro(nodoComentario * listaComentarios, int idLibro);
 nodoComentario* buscarAeliminar(nodoComentario* listaC, nodoArbolUsuarios* usuarioLogueado, int idComentario);
-void editarComentario(stComentario *comentario);
+void editarComentario(nodoComentario *comentario);
 
 #endif // STCOMENTARIO_H_INCLUDED
